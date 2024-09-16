@@ -1,0 +1,242 @@
+header {
+    /* Rectangle 1 */
+    display: flex;
+    justify-content: space-around;
+    background: #2C2C2C; /* Темно-серый фон */
+}
+
+header a {
+    /* Основные стили кнопки */
+    display: inline-block;
+    margin: 10px;
+    width: 165px;
+    height: 50px;
+    line-height: 50px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #E0E0E0; /* Светло-серый текст */
+    background-color: #4F4F4F; /* Темно-серый фон кнопки */
+    border-radius: 120px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+header a:hover {
+    /* Эффект при наведении */
+    background-color: #6A6A6A; /* Изменение фона на более светло-серый */
+    color: #ffffff; /* Белый текст при наведении */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+header a:active {
+    /* Эффект при нажатии */
+    transform: scale(0.95);
+}
+
+#searchForm {
+    width: 224px;
+    height: 41px;
+    background: #4F4F4F; /* Темно-серый фон для формы поиска */
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+#searchForm input {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    background-color: #E0E0E0; /* Светло-серый цвет фона для ввода */
+    color: #333; /* Тёмно-серый текст */
+}
+
+#searchForm input::placeholder {
+    color: #999;
+}
+
+#searchForm button {
+    padding: 8px 15px;
+    background-color: #6A6A6A; /* Средне-серый фон кнопки */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#searchForm button:hover {
+    background-color: #5A5A5A; /* Более темный серый при наведении */
+}
+
+#searchForm button:active {
+    transform: scale(0.95);
+}
+
+#searchForm button:focus {
+    outline: none;
+}
+
+.buscket {
+    width: 160px;
+    height: 90px;
+    background-color: #3C3C3C; /* Темно-серый фон кнопки корзины */
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.buscket:hover {
+    background-color: #4F4F4F; /* Средне-серый фон при наведении */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.buscket:active {
+    transform: translateY(2px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.buscket:focus {
+    outline: none;
+}
+
+.hit {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E5E5E5; /* Светло-серый фон для контейнера */
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.hit h1 {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 80px;
+    line-height: 1.1;
+    text-align: center;
+    color: #6A6A6A; /* Темно-серый цвет текста */
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+}
+
+
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+main {
+   
+    display: flex;
+    flex-wrap: wrap;  /* Чтобы карточки переносились на новую строку при уменьшении экрана */
+    justify-content: space-around;  /* Равномерное распределение карточек */
+    padding: 20px;
+}
+
+/* Оформление картки товара */
+article {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;  /* Ширина каждой карточки */
+    margin: 20px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    flex-grow: 1; /* Позволяет карточкам растягиваться, если нужно */
+    max-width: 300px; /* Ограничение максимальной ширины */
+}
+
+article:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+article img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 15px;
+}
+
+article p {
+    font-size: 16px;
+    color: #333;
+    margin: 10px 0;
+}
+
+article p span {
+    font-weight: bold;
+    color: #000;
+}
+
+.hh {
+    margin-top: 10px;
+    display: inline-block;
+    width: 100px;
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.hh:hover {
+    background-color: #218838;
+}
+
+/* Мобильная адаптивность */
+@media (max-width: 768px) {
+    .container {
+     
+    }
+
+    article {
+        width: 90%; /* Карточки занимают большую часть ширины экрана */
+    }
+}
+footer {
+    background-color: #333;  /* Темно-сірий фон футера */
+    padding: 20px;           /* Відступи всередині футера */
+    color: #d6d6d6;          /* Світло-сірий колір тексту */
+    text-align: center;      /* Центрування тексту */
+    font-size: 16px;         /* Розмір шрифту */
+    border-top: 1px solid #444; /* Тонка границя зверху футера */
+}
+
+footer p {
+    margin: 10px 0;          /* Вертикальні відступи між абзацами */
+}
+
+footer a {
+    color: #d6d6d6;          /* Світло-сірий колір для посилань */
+    text-decoration: none;   /* Без підкреслення */
+}
+
+footer a:hover {
+    color: #fff;             /* Білий колір при наведенні */
+    text-decoration: underline; /* Підкреслення при наведенні */
+}

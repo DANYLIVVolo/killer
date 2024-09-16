@@ -1,0 +1,402 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> 
+    <link rel="stylesheet" href="style.css"/>
+    <style>
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .modal-header {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .modal-body .quantity-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-body .quantity-controls button {
+            padding: 10px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #28a745;
+            color: #fff;
+            margin: 0 5px;
+            transition: background-color 0.3s;
+        }
+
+        .modal-body .quantity-controls button:hover {
+            background-color: #218838;
+        }
+
+        .modal-footer {
+            padding: 10px;
+            text-align: right;
+            border-top: 1px solid #ddd;
+        }
+
+        .modal-footer button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .modal-footer button.cancel {
+            background-color: #ccc;
+            color: #000;
+        }
+
+        .modal-footer button.submit {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .modal-footer button.cancel:hover {
+            background-color: #bbb;
+        }
+
+        .modal-footer button.submit:hover {
+            background-color: #218838;
+        }
+
+        /* About Us section styles */
+        .about-us {
+            background-color: #E5E5E5; /* Light grey background */
+            padding: 40px 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            text-align: center;
+        }
+
+        .about-us h2 {
+            color: #333;
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .about-us p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        header button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .hit {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .hit h1 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        article {
+            background-color: #fff;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        article img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        article p {
+            font-size: 16px;
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .hh {
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            padding:5px;
+
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+        }
+
+        footer a {
+            color: #ddd;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header> 
+        <a href="#main">Товари</a>
+        <a href="#about-us">Про нас</a>
+        <a href="#" id="supportBtn">Підтримка</a>
+        <form id="searchForm" class="d-flex mx-auto" role="search">
+            <input class="form-control me-2" type="search" placeholder="Пошук" aria-label="Search">
+            <button class="btn btn-outline-secondary btn-search" type="submit">Знайти</button>
+        </form>
+        <button class="buscket" onclick="window.location.href='index2.html'">Корзина</button>
+    </header>
+
+    <div class="hit"> 
+        <h1>ХІТ СЕЗОНУ</h1>
+    </div>
+
+    <main id="main">
+        <article>
+            <img src="img1/Screen-Shot-2021-03-31-at-2.14.49-PM.png" alt="Pancor Jackhammer Mk3A2">
+            <p>Pancor Jackhammer Mk3A2 америкснкьй булпап дробовик 12 калібра має барабан та автоматичну систему перезаряджання Масса: 7.9 кг Довжина: 787мм ЦІНА: 2500 $</p>
+            <a href="#" class="hh" onclick="showProductDetails('Pancor Jackhammer Mk3A2')">Додати до кошика</a>
+        </article>
+        
+        <article>
+            <img src="img1/завантаження.jpg.jfif" alt="АК-74">
+            <p>АК-74 класичний радянський автомат під набій 5,45×39 мм розроблений в 1970 році прийнятий на озброєння в багатьох країнах Масса: 3.3 кг Довжина: 943мм ЦІНА: 500 $</p>
+            <a href="#" class="hh" onclick="showProductDetails('АК-74')">Додати до кошика</a>
+        </article>
+        
+        <article>
+            <img src="img1/images11.jpg.jfif" alt="АК-47">
+            <p>АК-47 класичний радянський автомат під набій 7,62-мм мм розроблений в 1947 році прийнятий на озброєння в деяких країнах Масса: 4.3 кг Довжина: 870мм ЦІНА: 350 $</p>
+            <a href="#" class="hh" onclick="showProductDetails('АК-47')">Додати до кошика</a>
+        </article>
+    </main>
+
+    <!-- About Us Section -->
+    <section class="about-us" id="about-us">
+        <h2>Про нас</h2>
+        <p>Ми – команда професіоналів, яка спеціалізується на постачанні високоякісної зброї та аксесуарів для всіх ваших потреб. Наші товари проходять суворий контроль якості та тестуються, щоб забезпечити вам найкращі продукти на ринку. Наша мета – надати вам відмінний сервіс і підтримку, щоб кожен ваш досвід покупок був приємним і задовільним.</p>
+    </section>
+
+    <footer>
+        <p>Адреса: вуліця січових стрільців ліцей 5 кабінет 1</p> 
+        <p><a href="#">Політика конфіденційності</a></p>
+    </footer>
+
+    <!-- The Support Modal -->
+    <div id="aboutUsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Напишіть сюди що у вас сталось та детально опишіть проблему</h2>
+            </div>
+            <div class="modal-body">
+                <textarea placeholder="Введіть ваше повідомлення тут..."></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="cancel" id="closeModalBtn">Закрити</button>
+                <button class="submit">Відправити</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Product Detail Modal -->
+    <div id="productDetailModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="productName">Назва товару</h2>
+            </div>
+            <div class="modal-body">
+                <div class="quantity-controls">
+                    <button id="decreaseQuantity" onclick="adjustQuantity(-1)">-</button>
+                    <span id="quantity">1</span>
+                    <button id="increaseQuantity" onclick="adjustQuantity(1)">+</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="cancel" id="closeProductModalBtn">Закрити</button>
+                <button class="submit" id="addToCartBtn">Додати до кошика</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Support Modal
+        const modal = document.getElementById("aboutUsModal");
+        const supportBtn = document.getElementById("supportBtn");
+        const closeModalBtn = document.getElementById("closeModalBtn");
+
+        supportBtn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        closeModalBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Product Detail Modal
+        const productDetailModal = document.getElementById("productDetailModal");
+        const closeProductModalBtn = document.getElementById("closeProductModalBtn");
+        const addToCartBtn = document.getElementById("addToCartBtn");
+        const quantitySpan = document.getElementById("quantity");
+        let quantity = 1;
+        let currentProductName = '';
+
+        function openProductDetailModal(productName) {
+            currentProductName = productName;
+            document.getElementById("productName").innerText = productName;
+            quantity = 1; // Reset quantity when opening modal
+            quantitySpan.innerText = quantity;
+            productDetailModal.style.display = "block";
+        }
+
+        closeProductModalBtn.onclick = function() {
+            productDetailModal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == productDetailModal) {
+                productDetailModal.style.display = "none";
+            }
+        }
+
+        function adjustQuantity(amount) {
+            quantity += amount;
+            if (quantity < 1) quantity = 1;
+            quantitySpan.innerText = quantity;
+        }
+
+        addToCartBtn.onclick = function() {
+            addToCart(currentProductName, quantity);
+            productDetailModal.style.display = "none";
+        }
+
+        function addToCart(productName, quantity) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let existingProduct = cart.find(item => item.name === productName);
+
+            if (existingProduct) {
+                existingProduct.quantity += quantity;
+            } else {
+                cart.push({ name: productName, quantity: quantity });
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${productName} has been added to the cart.`);
+        }
+
+        function showProductDetails(productName) {
+            openProductDetailModal(productName);
+        }
+
+        function addToCart(productName, quantity) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let existingProduct = cart.find(item => item.name === productName);
+
+    if (existingProduct) {
+        existingProduct.quantity += quantity;
+    } else {
+        cart.push({ name: productName, quantity: quantity });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`${productName} has been added to the cart.`);
+
+}
+function addToCart(productName, quantity) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let existingProduct = cart.find(item => item.name === productName);
+
+    if (existingProduct) {
+        existingProduct.quantity += quantity;
+    } else {
+        cart.push({ name: productName, quantity: quantity });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`${productName} додано до кошика.`);
+}
+
+    </script>
+</body>
+</html>

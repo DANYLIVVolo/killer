@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина</title>
+    <link rel="stylesheet" href="style.css"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .cart {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #E5E5E5; /* Light grey background */
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .cart-item button {
+            padding: 5px 10px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #dc3545;
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+
+        .cart-item button:hover {
+            background-color: #c82333;
+        }
+
+        .checkout-btn, .return-home-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .checkout-btn {
+            background-color: #28a745;
+        }
+
+        .checkout-btn:hover {
+            background-color: #218838;
+        }
+
+        .return-home-btn {
+            background-color: #007bff;
+        }
+
+        .return-home-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .checkout-form {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .thank-you-message {
+            display: none;
+            text-align: center;
+            font-size: 24px;
+            color: #28a745;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cart">
+        <h2>Ваш кошик</h2>
+        <!-- Тут товари в кошику -->
+        <div class="cart-items"></div>
+
+        <!-- Кнопки -->
+        <button class="checkout-btn">Оформити замовлення</button>
+        <button class="return-home-btn" onclick="window.location.href='index.html'">Повернутись на головну</button>
+
+        <!-- Форма для оформлення замовлення -->
+        <div class="checkout-form">
+            <h3>Оформлення замовлення</h3>
+            <label for="name">Ваше ім'я:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="address">Адреса:</label>
+            <input type="text" id="address" name="address" required><br><br>
+
+            <button class="submit-btn">Відправити замовлення</button>
+        </div>
+
+        <!-- Повідомлення про успішне оформлення -->
+        <div class="thank-you-message">Дякуємо за замовлення!</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const checkoutBtn = document.querySelector('.checkout-btn');
+            const submitBtn = document.querySelector('.submit-btn');
+            const checkoutForm = document.querySelector('.checkout-form');
+            const thankYouMessage = document.querySelector('.thank-you-message');
+
+            // Показати форму оформлення замовлення
+            checkoutBtn.addEventListener('click', function () {
+                checkoutForm.style.display = 'block';
+                checkoutBtn.style.display = 'none'; // Приховуємо кнопку "Оформити замовлення"
+            });
+
+            // Показати повідомлення після відправки форми
+            submitBtn.addEventListener('click', function () {
+                checkoutForm.style.display = 'none';
+                thankYouMessage.style.display = 'block';
+            });
+
+            // Функція для завантаження товарів у кошик
+            function loadCart() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const cartContainer = document.querySelector('.cart-items');
+
+                // Очищуємо попередній вміст
+                cartContainer.innerHTML = '';
+
+                if (cart.length === 0) {
+                    cartContainer.innerHTML = '<p>Кошик порожній</p>';
+                } else {
+                    cart.forEach(item => {
+                        const cartItem = document.createElement('div');
+                        cartItem.className = 'cart-item';
+                        cartItem.innerHTML = `
+                            <h3>${item.name}</h3>
+                            <span>${item.quantity} шт.</span>
+                            <button onclick="removeFromCart('${item.name}')">Видалити</button>
+                        `;
+                        cartContainer.appendChild(cartItem);
+                    });
+                }
+            }
+
+            function removeFromCart(productName) {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cart = cart.filter(item => item.name !== productName);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                loadCart(); // Оновити кошик після видалення
+            }
+
+            loadCart(); // Завантажити кошик при завантаженні сторінки
+        });
+    </script>
+</body>
+</html>
